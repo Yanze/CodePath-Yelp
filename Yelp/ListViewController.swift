@@ -20,7 +20,6 @@ class ListViewController: UITableViewController {
     
     func searchBusiness() {
         Helpers.sharedInstance.searchBusiness(nil, sort: nil, categories: nil, deals: nil) { (businesses) in
-            print(businesses)
             self.businesses = businesses
             self.tableView.reloadData()
         }

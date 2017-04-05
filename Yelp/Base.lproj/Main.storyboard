@@ -211,7 +211,18 @@
                     <view key="view" contentMode="scaleToFill" id="Cyr-j6-yGn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="wMQ-5a-mKQ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="0.81182014989999995" blue="0.1227136725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wMQ-5a-mKQ" firstAttribute="top" secondItem="L8e-qk-E0t" secondAttribute="bottom" id="KiX-WM-12Z"/>
+                            <constraint firstItem="Nvk-ne-0Dw" firstAttribute="top" secondItem="wMQ-5a-mKQ" secondAttribute="bottom" id="PW4-Nw-qBt"/>
+                            <constraint firstItem="wMQ-5a-mKQ" firstAttribute="leading" secondItem="Cyr-j6-yGn" secondAttribute="leading" id="V70-9x-DIE"/>
+                            <constraint firstAttribute="trailing" secondItem="wMQ-5a-mKQ" secondAttribute="trailing" id="luj-Ov-t2c"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DBP-Pe-JaG" userLabel="First Responder" sceneMemberID="firstResponder"/>
