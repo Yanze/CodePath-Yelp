@@ -17,14 +17,12 @@ enum YelpSortMode : Int {
 let baseUrl = "https://api.yelp.com/v3"
 let token_type = "Bearer "
 let access_token = "fqSUw_t2L1gr_rIXCZ8BdcQ67_mw0GcecL_WTX6IWPsXTAkwiX2xsOc6P-qOp7OuURfOBT4cBosO6GITfIPyMAm_JZXRkfzO4usuLzN-xLxcnkbJLTwulPiWoEDjWHYx"
-//let appSecret = "EZGUolH7xETzGO3b6W806i1hN1XPq6PiVC6QMAPtcdDnxck1XOU5OWflMgUip4wu"
-//let appId = "FRL1V8VH43JHR4eUWmI1FQ"
 
 class YelpClient: NSObject {
     
     static var sharedInstance = YelpClient()
     
-    func searchBusinessWith(_ term: String?, sort: YelpSortMode?, categories: [String]?, deals:Bool?) {
+    func searchBusinessWith(_ term: String?, sort: YelpSortMode?, categories: [String]?, deals:Bool?, completionHandler: @escaping([[String: Any]]) -> Void) {
         let manager = AFHTTPSessionManager()
         let url = baseUrl.appending("/businesses/search")
         
@@ -46,7 +44,9 @@ class YelpClient: NSObject {
         }
         
         manager.get(url, parameters: parameters, progress: nil, success: { (operation, response) in
-            print(response!)
+            if let dict = response as? [String: Any], let data = dict["businesses"] as? [[String: Any]] {
+                completionHandler(data)
+            }
             
         }) { (operation, error) in
             print(error)
