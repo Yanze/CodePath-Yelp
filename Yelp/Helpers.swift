@@ -15,7 +15,7 @@ class Helpers: NSObject {
     var businesses = [Business]()
     
     
-    func getBusiness() {
+    func searchBusiness(_ term: String?, sort: YelpSortMode?, categories: [String]?, deals:Bool?, completionHandler: @escaping([Business]) -> Void) {
         YelpClient.sharedInstance.searchBusinessWith(nil, sort: nil, categories: nil, deals: nil) {
             data in
             
@@ -23,21 +23,21 @@ class Helpers: NSObject {
                 let newBusiness = Business()
                 newBusiness.name = business["name"] as! String
                 newBusiness.rating = business["rating"] as! Float
-                //  TODO: found nil when unwrap the address
-//                newBusiness.address = business["display_address"] as! [String]
+                let location = business["location"] as! [String: Any]
+                
+                newBusiness.address = location["display_address"] as! [String]
                 newBusiness.distance = business["distance"] as! Double
                 newBusiness.price = business["price"] as! String
                 newBusiness.image_url = business["image_url"] as! String
                 newBusiness.coordinates = business["coordinates"] as! Dictionary<String, Double>
-                
                 newBusiness.categories = business["categories"] as! [Dictionary<String, Any>]
                 newBusiness.display_phone = business["display_phone"] as! String
                 newBusiness.review_count = business["review_count"] as! Int
                 newBusiness.id = business["id"] as! String
                 newBusiness.is_closed = business["is_closed"] as! Bool
-                print(newBusiness)
+                self.businesses.append(newBusiness)
             }
-            
+         completionHandler(self.businesses)
         }
     }
     

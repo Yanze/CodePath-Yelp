@@ -7,10 +7,6 @@
 //
 
 import Foundation
-import AFNetworking
-
-
-
 
 class Business: NSObject {
     var name: String
