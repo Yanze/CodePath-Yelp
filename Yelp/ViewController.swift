@@ -28,6 +28,12 @@ class ViewController: UIViewController {
     @IBAction func toggle(_ sender: UIButton) {
         self.mapView.isHidden = !self.mapView.isHidden
         self.listView.isHidden = !self.listView.isHidden
+        if self.mapView.isHidden {
+            sender.setTitle("Map", for: .normal)
+        }
+        else {
+            sender.setTitle("List", for: .normal)
+        }
     }
 
 
