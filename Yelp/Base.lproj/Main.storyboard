@@ -34,6 +34,12 @@
                                     <segue destination="Pei-OO-TCp" kind="embed" identifier="MapView" id="a1L-DY-crC"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mrv-pt-Ns3">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <connections>
+                                    <segue destination="f9o-n9-L2K" kind="embed" id="B89-pL-wj3"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -43,11 +49,25 @@
                             <constraint firstItem="Bkp-00-l71" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="U5C-Nc-g59"/>
                             <constraint firstItem="Bkp-00-l71" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="WE0-gg-nbz"/>
                             <constraint firstAttribute="trailing" secondItem="3ee-Hg-J2k" secondAttribute="trailing" id="YfY-2x-nTH"/>
+                            <constraint firstAttribute="trailing" secondItem="mrv-pt-Ns3" secondAttribute="trailing" id="dER-1F-kGx"/>
+                            <constraint firstItem="mrv-pt-Ns3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ok7-D0-TGg"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mrv-pt-Ns3" secondAttribute="bottom" id="pHI-TD-623"/>
+                            <constraint firstItem="mrv-pt-Ns3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="riD-c4-QGY"/>
                             <constraint firstItem="3ee-Hg-J2k" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="x2b-jW-PKO"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3ee-Hg-J2k" secondAttribute="bottom" id="xY0-Rn-H9o"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fDB-a8-B39">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="YZp-Hv-Xz6">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Tir-2A-p1h">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Filter"/>
+                                <connections>
+                                    <action selector="filterButtonpressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ele-w9-RW2"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="p3e-UT-Zcn">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ix6-lU-AXA" userLabel="Map">
                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
@@ -62,6 +82,8 @@
                     <connections>
                         <outlet property="listView" destination="3ee-Hg-J2k" id="2je-O0-ukr"/>
                         <outlet property="mapView" destination="Bkp-00-l71" id="2f5-HT-0Dx"/>
+                        <outlet property="searchResultsView" destination="mrv-pt-Ns3" id="KtK-Bh-abb"/>
+                        <outlet property="switchViewButton" destination="Ix6-lU-AXA" id="vqW-dN-qjQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -199,6 +221,75 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UJ6-oV-T2S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1640.8" y="-895.50224887556226"/>
+        </scene>
+        <!--Filter Table View Controller-->
+        <scene sceneID="53i-28-tib">
+            <objects>
+                <tableViewController storyboardIdentifier="FilterViewController" id="tH0-Xs-yLZ" customClass="FilterTableViewController" customModule="Yelp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="PcU-r3-4WA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="Tyx-Va-5rS">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="116" id="Wwe-Hg-TjX">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="116"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wwe-Hg-TjX" id="EWq-cz-Pkn">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="116"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GSK-JY-5bd">
+                                                    <rect key="frame" x="8" y="27" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="tH0-Xs-yLZ" id="imj-3p-WQI"/>
+                            <outlet property="delegate" destination="tH0-Xs-yLZ" id="LKd-bJ-lWl"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UJk-9f-kTf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="808.79999999999995" y="-1245.4272863568217"/>
+        </scene>
+        <!--Search Results View Controller-->
+        <scene sceneID="rwv-5t-1kn">
+            <objects>
+                <tableViewController id="f9o-n9-L2K" customClass="SearchResultsViewController" customModule="Yelp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="YUx-2Q-gJf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="lK1-nM-Wp2">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lK1-nM-Wp2" id="Rc3-lS-dPK">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="f9o-n9-L2K" id="YF8-jI-yTS"/>
+                            <outlet property="delegate" destination="f9o-n9-L2K" id="Jd7-u9-TcV"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rO3-W1-qTR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="809" y="103"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="OV1-Hb-cg3">
