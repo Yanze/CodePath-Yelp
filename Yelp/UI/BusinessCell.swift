@@ -9,6 +9,7 @@
 import UIKit
 import AFNetworking
 
+
 class BusinessCell: UITableViewCell {
     
     @IBOutlet weak var businessImageView: UIImageView!
@@ -62,6 +63,32 @@ class BusinessCell: UITableViewCell {
         if let resImageUrl = business?.image_url {
             businessImageView.setImageWith(URL(string:resImageUrl)!)
         }
+        
+        if let rating = business?.rating {
+            switch rating {
+            case 1.0:
+                rateImageView.image = UIImage(named: "regular_0")
+            case 1.5:
+                rateImageView.image = UIImage(named: "regular_1_half")
+            case 2.0:
+                rateImageView.image = UIImage(named: "regular_2")
+            case 2.5:
+                rateImageView.image = UIImage(named: "regular_2_half")
+            case 3.0:
+                rateImageView.image = UIImage(named: "regular_3")
+            case 3.5:
+                rateImageView.image = UIImage(named: "regular_3_half")
+            case 4.0:
+                rateImageView.image = UIImage(named: "regular_4")
+            case 4.5:
+                rateImageView.image = UIImage(named: "regular_4_half")
+            case 5.0:
+                rateImageView.image = UIImage(named: "regular_5")
+            default:
+                break
+            }
+        }
+        
     }
     
     

@@ -16,6 +16,7 @@ class FilterTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
     }
 
     @IBAction func searchButtonPressed(_ sender: UIButton) {
@@ -26,6 +27,30 @@ class FilterTableViewController: UITableViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            if dateCellExpanded {
+                dateCellExpanded = false
+            } else {
+                dateCellExpanded = true
+            }
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        }
+
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            if dateCellExpanded {
+                return 250
+            } else {
+                return 50
+            }
+        }
+        return 50
+
+    }
     
     
 }
