@@ -44,10 +44,6 @@ class ViewController: UIViewController, UISearchBarDelegate, UISearchResultsUpda
         }
     }
     
-    @IBAction func filterButtonpressed(_ sender: UIButton) {
-        let filterVc = self.storyboard?.instantiateViewController(withIdentifier: "FilterViewController")
-        self.navigationController?.pushViewController(filterVc!, animated: true)
-    }
     
     func searchBusiness() {
         Helpers.sharedInstance.searchBusiness(nil, sort: nil, categories: nil, deals: nil) { (businesses) in
@@ -75,9 +71,14 @@ class ViewController: UIViewController, UISearchBarDelegate, UISearchResultsUpda
         listView.isHidden = true
         mapView.isHidden = true
         searchResultsView.isHidden = false
+
     }
     
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+//    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+//        
+//    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchResultsView.isHidden = true
         if switchViewButton.titleLabel?.text! == "Map" {
             listView.isHidden = false
@@ -102,6 +103,13 @@ class ViewController: UIViewController, UISearchBarDelegate, UISearchResultsUpda
         }
     }
 
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "SearchResults" {
+//            let searchVc = segue.destination as! SearchResultsViewController
+//            print(currentBusinesses)
+//            searchVc.searchedBusinesses = currentBusinesses
+//        }
+//    }
     
     
 

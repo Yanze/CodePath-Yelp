@@ -22,6 +22,7 @@ class YelpClient: NSObject {
     
     static var sharedInstance = YelpClient()
     
+    
     func searchBusinessWith(_ term: String?, sort: YelpSortMode?, categories: [String]?, deals:Bool?, completionHandler: @escaping([[String: Any]]) -> Void) {
         let manager = AFHTTPSessionManager()
         let url = baseUrl.appending("/businesses/search")

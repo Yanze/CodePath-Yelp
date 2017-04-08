@@ -13,7 +13,7 @@ class Helpers: NSObject {
     
     static let sharedInstance = Helpers()
     var businesses = [Business]()
-    
+    var searchedResults = [Business]()
     
     func searchBusiness(_ term: String?, sort: YelpSortMode?, categories: [String]?, deals:Bool?, completionHandler: @escaping([Business]) -> Void) {
         YelpClient.sharedInstance.searchBusinessWith(nil, sort: nil, categories: nil, deals: nil) {
