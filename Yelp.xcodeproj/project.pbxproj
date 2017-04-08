@@ -16,8 +16,6 @@
 		E0629AA91E980160006D4DC3 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0629AA41E980160006D4DC3 /* FilterTableViewController.swift */; };
 		E0629AAA1E980160006D4DC3 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0629AA51E980160006D4DC3 /* ListViewController.swift */; };
 		E0629AAB1E980160006D4DC3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0629AA61E980160006D4DC3 /* MapViewController.swift */; };
-		E0629AAC1E980160006D4DC3 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0629AA71E980160006D4DC3 /* SearchResultsViewController.swift */; };
-		E0629AAD1E980160006D4DC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0629AA81E980160006D4DC3 /* ViewController.swift */; };
 		E0629AAF1E9809C1006D4DC3 /* SearchResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0629AAE1E9809C1006D4DC3 /* SearchResultsCell.swift */; };
 		E08C26AD1E947633001C3160 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E08C26AC1E947633001C3160 /* AFNetworking.framework */; };
 		E09C60C01E9465C8006F9736 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09C60BF1E9465C8006F9736 /* AppDelegate.swift */; };
@@ -38,8 +36,6 @@
 		E0629AA41E980160006D4DC3 /* FilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
 		E0629AA51E980160006D4DC3 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		E0629AA61E980160006D4DC3 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		E0629AA71E980160006D4DC3 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
-		E0629AA81E980160006D4DC3 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E0629AAE1E9809C1006D4DC3 /* SearchResultsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsCell.swift; sourceTree = "<group>"; };
 		E08C26AC1E947633001C3160 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = "Pods/../build/Debug-iphoneos/AFNetworking/AFNetworking.framework"; sourceTree = "<group>"; };
 		E08D3BD01E98289D007693E3 /* FoldingCell.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FoldingCell.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Yelp-cejiyqtutjbkwoasnjumeasxxqqe/Build/Products/Debug-iphonesimulator/FoldingCell/FoldingCell.framework"; sourceTree = "<group>"; };
@@ -120,8 +116,6 @@
 				E0629AA41E980160006D4DC3 /* FilterTableViewController.swift */,
 				E0629AA51E980160006D4DC3 /* ListViewController.swift */,
 				E0629AA61E980160006D4DC3 /* MapViewController.swift */,
-				E0629AA71E980160006D4DC3 /* SearchResultsViewController.swift */,
-				E0629AA81E980160006D4DC3 /* ViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -284,7 +278,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0629AAD1E980160006D4DC3 /* ViewController.swift in Sources */,
 				E09C60C01E9465C8006F9736 /* AppDelegate.swift in Sources */,
 				E0629AAF1E9809C1006D4DC3 /* SearchResultsCell.swift in Sources */,
 				E0629AA91E980160006D4DC3 /* FilterTableViewController.swift in Sources */,
@@ -294,7 +287,6 @@
 				E0629AA21E980155006D4DC3 /* Business.swift in Sources */,
 				E0629A9B1E980142006D4DC3 /* Helpers.swift in Sources */,
 				E0629AAA1E980160006D4DC3 /* ListViewController.swift in Sources */,
-				E0629AAC1E980160006D4DC3 /* SearchResultsViewController.swift in Sources */,
 				E0629AAB1E980160006D4DC3 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

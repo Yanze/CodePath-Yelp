@@ -25,13 +25,31 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.setRegion(MKCoordinateRegionMakeWithDistance(location, distanceSpan, distanceSpan), animated: true)
 
         let pin = CustomAnnontation(title: "Title", subtitle: "Subtitle", coordinate: location)
-
         mapView.addAnnotation(pin)
 
         
         
     }
-    
+//    
+//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+//        let identifier = "annontation"
+//        if annotation is CustomAnnontation {
+//            if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
+//                annotationView.annotation = annotation
+//                return annotationView
+//            }else {
+//                let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+//                annotationView.isEnabled = true
+//                annotationView.canShowCallout = true
+//                
+//                let btn = UIButton(type: .detailDisclosure)
+//                annotationView.rightCalloutAccessoryView = btn
+//                return annotationView
+//            }
+//        }
+//        return nil
+//    }
+//    
 
     
     

@@ -1,5 +1,5 @@
 //
-//  Helpers.swift
+//  BusinessManager.swift
 //  Yelp
 //
 //  Created by yanze on 4/4/17.
@@ -9,9 +9,9 @@
 import UIKit
 import Foundation
 
-class Helpers: NSObject {
+class BusinessManager: NSObject {
     
-    static let sharedInstance = Helpers()
+    static let sharedInstance = BusinessManager()
     var businesses = [Business]()
     var searchedResults = [Business]()
     
