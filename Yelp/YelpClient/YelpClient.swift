@@ -40,8 +40,6 @@ class YelpClient: NSObject {
             parameters["open_now"] = openNow as Any?
         }
         
-        print(parameters)
-        
         manager.get(url, parameters: parameters, progress: nil, success: { (operation, response) in
             if let dict = response as? [String: Any], let data = dict["businesses"] as? [[String: Any]] {
                 completionHandler(data)
