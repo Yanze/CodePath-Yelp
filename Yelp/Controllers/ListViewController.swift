@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class ListViewController: UITableViewController, UISearchBarDelegate, UISearchResultsUpdating  {
   
@@ -17,7 +18,6 @@ class ListViewController: UITableViewController, UISearchBarDelegate, UISearchRe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        searchBusiness()
         setupSearchBar()
         tableView.estimatedRowHeight = 135
 
@@ -25,17 +25,22 @@ class ListViewController: UITableViewController, UISearchBarDelegate, UISearchRe
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        searchBusinesses()
+ 
+    }
+    
+    func searchBusinesses() {
+        SVProgressHUD.show()
         let categories = UserDefaults.standard.object(forKey: "categories") as? [String]
-        let deals = UserDefaults.standard.object(forKey: "isOfferingDeal") as? Bool
-        
-        BusinessManager.sharedInstance.searchBusiness(detextedText, sort: YelpSortMode.bestMatch, categories: categories, deals: deals) { (businesses) in
+        let isOpenNow = UserDefaults.standard.object(forKey: "isOpenNow") as? Bool
+        let sort = UserDefaults.standard.object(forKey: "sortByStringValue") as? String
+        BusinessManager.sharedInstance.searchBusiness(detextedText, sort: sort, categories: categories, openNow: isOpenNow) { (businesses) in
             self.businesses = businesses
             self.currentBusinesses = businesses
+            SVProgressHUD.dismiss()
             self.tableView.reloadData()
         }
-        
     }
-
     
     func setupSearchBar() {
         searchController.searchResultsUpdater = self
@@ -65,6 +70,7 @@ extension ListViewController {
     }
 }
 
+//MARK: search bar methods
 extension ListViewController {
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchtext(searchText: searchController.searchBar.text!)

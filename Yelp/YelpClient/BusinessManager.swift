@@ -15,8 +15,8 @@ class BusinessManager: NSObject {
     var businesses = [Business]()
     var searchedResults = [Business]()
     
-    func searchBusiness(_ term: String?, sort: YelpSortMode?, categories: [String]?, deals:Bool?, completionHandler: @escaping([Business]) -> Void) {
-        YelpClient.sharedInstance.searchBusinessWith(term, sort: sort, categories: categories, deals: deals) {
+    func searchBusiness(_ term: String?, sort: String?, categories: [String]?, openNow:Bool?, completionHandler: @escaping([Business]) -> Void) {
+        YelpClient.sharedInstance.searchBusinessWith(term, sort: sort, categories: categories, openNow: openNow) {
             data in
             
             self.businesses = []
