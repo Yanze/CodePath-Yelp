@@ -16,9 +16,13 @@ class ListViewController: UITableViewController, UISearchBarDelegate, UISearchRe
     var currentBusinesses = [Business]()
     var detextedText = ""
     
+    @IBOutlet weak var filterButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSearchBar()
+        setupFilterButton()
         tableView.estimatedRowHeight = 135
 
     }
@@ -27,6 +31,16 @@ class ListViewController: UITableViewController, UISearchBarDelegate, UISearchRe
         super.viewWillAppear(animated)
         searchBusinesses()
  
+    }
+    
+    func setupFilterButton() {
+        filterButton.layer.cornerRadius = 5
+        filterButton.layer.borderWidth = 1.5
+        filterButton.layer.borderColor = UIColor.white.cgColor
+        filterButton.layer.shadowColor = UIColor.white.cgColor
+        filterButton.layer.shadowOpacity = 0.5
+        filterButton.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
+        filterButton.layer.shadowRadius = 15.0
     }
     
     func searchBusinesses() {

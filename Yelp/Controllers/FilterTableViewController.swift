@@ -31,28 +31,13 @@ class FilterTableViewController: UITableViewController {
         super.viewDidLoad()
         distancePickerView.delegate = self
         distancePickerView.dataSource = self
+        loadValues()
+        setupSwitchButtons()
         
-        setupIsOfferingDealSwitchButtonValue(type: "isOpenNow", switchButton: isOpenNowSwitch)
-        setupIsOfferingDealSwitchButtonValue(type: "isAmericanCategoryOn", switchButton: americanCategorySwitchButton)
-        setupIsOfferingDealSwitchButtonValue(type: "isChineseCategoryOn", switchButton: chineseCategorySwitchButton)
-        setupIsOfferingDealSwitchButtonValue(type: "isFrenchCategoryOn", switchButton: frenchCategorySwitchButton)
-        setupIsOfferingDealSwitchButtonValue(type: "isItalianCategoryOn", switchButton: italianCategorySwitchButton)
-
-        if defaults.object(forKey: "distancePickerViewIndex") == nil {
-            distancePickerView.selectedRow(inComponent: 0)
-            
-        }else {
-            distancePickerView.selectRow(defaults.object(forKey: "distancePickerViewIndex") as! Int, inComponent: 0, animated: true)
-        }
-        
-        if defaults.object(forKey: "sortBy") == nil {
-            segmentControl.selectedSegmentIndex = 0
-        }else {
-            let val = UserDefaults.standard.object(forKey: "sortBy") as! Int
-            segmentControl.selectedSegmentIndex = val
-        }
-
+        tableView.allowsSelection = false
         tableView.tableFooterView = UIView()
+        
+        
 
     }
 
@@ -78,6 +63,42 @@ class FilterTableViewController: UITableViewController {
         
     }
     
+    func loadValues() {
+        setupIsOfferingDealSwitchButtonValue(type: "isOpenNow", switchButton: isOpenNowSwitch)
+        setupIsOfferingDealSwitchButtonValue(type: "isAmericanCategoryOn", switchButton: americanCategorySwitchButton)
+        setupIsOfferingDealSwitchButtonValue(type: "isChineseCategoryOn", switchButton: chineseCategorySwitchButton)
+        setupIsOfferingDealSwitchButtonValue(type: "isFrenchCategoryOn", switchButton: frenchCategorySwitchButton)
+        setupIsOfferingDealSwitchButtonValue(type: "isItalianCategoryOn", switchButton: italianCategorySwitchButton)
+        
+        if defaults.object(forKey: "distancePickerViewIndex") == nil {
+            distancePickerView.selectedRow(inComponent: 0)
+            
+        }else {
+            distancePickerView.selectRow(defaults.object(forKey: "distancePickerViewIndex") as! Int, inComponent: 0, animated: true)
+        }
+        
+        if defaults.object(forKey: "sortBy") == nil {
+            segmentControl.selectedSegmentIndex = 0
+        }else {
+            let val = UserDefaults.standard.object(forKey: "sortBy") as! Int
+            segmentControl.selectedSegmentIndex = val
+        }
+    }
+    
+    func setupSwitchButtons() {
+        isOpenNowSwitch.tintColor =  UIColor(red: 211/255, green: 35/255, blue: 35/255, alpha: 1)
+        isOpenNowSwitch.onTintColor = UIColor(red: 211/255, green: 35/255, blue: 35/255, alpha: 1)
+        
+        americanCategorySwitchButton.tintColor = UIColor(red: 211/255, green: 35/255, blue: 35/255, alpha: 1)
+        americanCategorySwitchButton.onTintColor = UIColor(red: 211/255, green: 35/255, blue: 35/255, alpha: 1)
+        
+        chineseCategorySwitchButton.tintColor = UIColor(red: 211/255, green: 35/255, blue: 35/255, alpha: 1)
+        chineseCategorySwitchButton.onTintColor = UIColor(red: 211/255, green: 35/255, blue: 35/255, alpha: 1)
+        frenchCategorySwitchButton.tintColor = UIColor(red: 211/255, green: 35/255, blue: 35/255, alpha: 1)
+        frenchCategorySwitchButton.onTintColor = UIColor(red: 211/255, green: 35/255, blue: 35/255, alpha: 1)
+        italianCategorySwitchButton.tintColor = UIColor(red: 211/255, green: 35/255, blue: 35/255, alpha: 1)
+        italianCategorySwitchButton.onTintColor = UIColor(red: 211/255, green: 35/255, blue: 35/255, alpha: 1)
+    }
 
     func setupIsOfferingDealSwitchButtonValue(type: String, switchButton: UISwitch) {
         if defaults.object(forKey: type) == nil {
