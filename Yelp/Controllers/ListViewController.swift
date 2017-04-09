@@ -82,6 +82,7 @@ extension ListViewController {
         cell.business = currentBusinesses[indexPath.row]
         return cell
     }
+    
 }
 
 //MARK: search bar methods

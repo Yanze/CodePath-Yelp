@@ -6,7 +6,6 @@ target 'Yelp' do
   use_frameworks!
  pod 'AFNetworking', '~> 3.0'
  pod 'SVProgressHUD'
- pod 'BetterSegmentedControl', '~> 0.7'
   # Pods for Yelp
 
 end

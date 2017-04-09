@@ -23,7 +23,6 @@
 		E09C60C71E9465C8006F9736 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E09C60C61E9465C8006F9736 /* Assets.xcassets */; };
 		E09C60CA1E9465C8006F9736 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E09C60C81E9465C8006F9736 /* LaunchScreen.storyboard */; };
 		E0D9324F1E985EAA00802A73 /* DistancePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D9324E1E985EAA00802A73 /* DistancePickerCell.swift */; };
-		E0E05CFE1E9AB18600322D82 /* BetterSegmentedControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0E05CFD1E9AB18600322D82 /* BetterSegmentedControl.framework */; };
 		E0E05D001E9AB25600322D82 /* KNSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E05CFF1E9AB25600322D82 /* KNSwitcher.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,7 +57,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0E05CFE1E9AB18600322D82 /* BetterSegmentedControl.framework in Frameworks */,
 				E05F8EBA1E95A9B300947AEE /* MapKit.framework in Frameworks */,
 				E08C26AD1E947633001C3160 /* AFNetworking.framework in Frameworks */,
 				81047951DE88686F8770640D /* Pods_Yelp.framework in Frameworks */,

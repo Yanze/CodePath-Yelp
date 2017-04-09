@@ -73,6 +73,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
     }
     
     func pinLocations(businesses: [Business]) {
+        locations = []
         for business in businesses {
             let coordinates = business.coordinates
             let address = business.address.joined(separator: ", ")
@@ -118,6 +119,9 @@ extension MapViewController {
             currentBusinesses = businesses
         }
         BusinessManager.sharedInstance.searchedResults = currentBusinesses
+
+        removeAnnotations()
+        pinLocations(businesses: currentBusinesses)
     }
  
     
