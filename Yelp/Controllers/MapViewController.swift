@@ -11,18 +11,24 @@ import MapKit
 import CoreLocation
 
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
     
     @IBOutlet weak var mapView: MKMapView!
+    var searchController = UISearchController(searchResultsController: nil)
     
     var businesses = [Business]()
+    var currentBusinesses = [Business]()
     var filteredBusinesses = [Business]()
     var locationManager = CLLocationManager()
 
+    var locations = [BusinessAnnotation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupSearchBar()
+        
         businesses = BusinessManager.sharedInstance.businesses
+        currentBusinesses = BusinessManager.sharedInstance.businesses
         
         let centerLocation = CLLocation(latitude: 37.7833, longitude: -122.4167)
         goToLocation(location: centerLocation)
@@ -31,9 +37,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.distanceFilter = 200
         locationManager.requestWhenInUseAuthorization()
-        
-        
-        pinLocations()
+
+        pinLocations(businesses: currentBusinesses)
         
     }
     
@@ -42,19 +47,36 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
     }
     
+    
+    @IBAction func dismissViewController(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func setupSearchBar() {
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = true
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.delegate = self
+        searchController.searchBar.sizeToFit()
+        definesPresentationContext = true
+        self.navigationItem.titleView = searchController.searchBar
+    }
+    
     func goToLocation(location: CLLocation) {
         let span = MKCoordinateSpanMake(0.1, 0.1)
         let region = MKCoordinateRegionMake(location.coordinate, span)
         mapView.setRegion(region, animated: false)
     }
     
-    func pinLocations() {
-        var locations = [Capital]()
-        
+    func removeAnnotations() {
+        mapView.removeAnnotations(locations)
+    }
+    
+    func pinLocations(businesses: [Business]) {
         for business in businesses {
             let coordinates = business.coordinates
             let address = business.address.joined(separator: ", ")
-            let location = Capital(title: business.name, coordinate: CLLocationCoordinate2D(latitude: coordinates["latitude"]!, longitude: coordinates["longitude"]!), info:  address)
+            let location = BusinessAnnotation(title: business.name, coordinate: CLLocationCoordinate2D(latitude: coordinates["latitude"]!, longitude: coordinates["longitude"]!), info:  address)
             locations.append(location)
         }
         mapView.addAnnotations(locations)
@@ -78,7 +100,33 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
 }
 
-class Capital: NSObject, MKAnnotation {
+//MARK: search bar methods
+extension MapViewController {
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchtext(searchText: searchController.searchBar.text!)
+    }
+    
+    func filterContentForSearchtext(searchText: String, scope: String = "All") {
+        let filteredBusinesses = businesses.filter {
+            business in
+            return business.name.lowercased().contains(searchText.lowercased())
+        }
+        if searchController.isActive && searchController.searchBar.text != "" {
+            currentBusinesses = filteredBusinesses
+        }
+        else {
+            currentBusinesses = businesses
+        }
+        BusinessManager.sharedInstance.searchedResults = currentBusinesses
+    }
+ 
+    
+}
+
+
+
+
+class BusinessAnnotation: NSObject, MKAnnotation {
     var title: String?
     var coordinate: CLLocationCoordinate2D
     var info: String
@@ -89,17 +137,4 @@ class Capital: NSObject, MKAnnotation {
         self.info = info
     }
 }
-
-
-//class CustomAnnontation: NSObject, MKAnnotation {
-//    var title: String?
-//    var subtitle: String?
-//    var coordinate: CLLocationCoordinate2D
-//    
-//    init(title: String, subtitle: String, coordinate: CLLocationCoordinate2D) {
-//        self.title = title
-//        self.subtitle = subtitle
-//        self.coordinate = coordinate
-//    }
-//}
 

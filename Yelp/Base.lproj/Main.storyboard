@@ -249,7 +249,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="82d-Kr-R97" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3108" y="-633.28335832083962"/>
+            <point key="canvasLocation" x="4047.1999999999998" y="-633.28335832083962"/>
         </scene>
         <!--List View Controller-->
         <scene sceneID="HzF-Q9-orQ">
@@ -377,7 +377,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Map"/>
                                 <connections>
-                                    <segue destination="PBm-vh-Wsz" kind="show" id="fh3-XC-vS6"/>
+                                    <segue destination="ojB-bn-OTK" kind="show" id="fh3-XC-vS6"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -411,13 +411,25 @@
                             <constraint firstItem="gVK-IA-vrI" firstAttribute="leading" secondItem="usN-UQ-NZT" secondAttribute="leading" id="zPj-Q0-RuX"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="r2T-j7-lct">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="Z9c-WF-Ssy">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LWM-mG-ZOT">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="dismissViewController:" destination="PBm-vh-Wsz" eventType="touchUpInside" id="0VS-3y-ptM"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="gVK-IA-vrI" id="ReT-cZ-h2N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ac-GS-LOm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2350" y="-1316"/>
+            <point key="canvasLocation" x="3028" y="-1316"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lww-V5-jJ2">
@@ -436,6 +448,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HWt-BW-0Z6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1647" y="-654"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lp8-TJ-0n9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ojB-bn-OTK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5fp-fw-SAP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="PBm-vh-Wsz" kind="relationship" relationship="rootViewController" id="lXZ-CD-fvO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Mt-iz-H48" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2349.5999999999999" y="-1316.4917541229386"/>
         </scene>
     </scenes>
     <resources>
