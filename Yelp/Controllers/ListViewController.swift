@@ -17,19 +17,25 @@ class ListViewController: UITableViewController, UISearchBarDelegate, UISearchRe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchBusiness()
+//        searchBusiness()
         setupSearchBar()
         tableView.estimatedRowHeight = 135
 
     }
     
-    func searchBusiness() {
-        BusinessManager.sharedInstance.searchBusiness(nil, sort: nil, categories: nil, deals: nil) { (businesses) in
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let categories = UserDefaults.standard.object(forKey: "categories") as? [String]
+        let deals = UserDefaults.standard.object(forKey: "isOfferingDeal") as? Bool
+        
+        BusinessManager.sharedInstance.searchBusiness(detextedText, sort: YelpSortMode.bestMatch, categories: categories, deals: deals) { (businesses) in
             self.businesses = businesses
             self.currentBusinesses = businesses
             self.tableView.reloadData()
         }
+        
     }
+
     
     func setupSearchBar() {
         searchController.searchResultsUpdater = self
@@ -75,6 +81,7 @@ extension ListViewController {
         else {
             currentBusinesses = businesses
         }
+        BusinessManager.sharedInstance.searchedResults = currentBusinesses
         tableView.reloadData()
     }
 }

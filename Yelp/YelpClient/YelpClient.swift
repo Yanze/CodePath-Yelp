@@ -10,8 +10,11 @@ import Foundation
 import AFNetworking
 
 
-enum YelpSortMode : Int {
-    case bestMatch = 0, distance, highestRated
+enum YelpSortMode : String {
+    case bestMatch = "best_match"
+    case rating = "rating"
+    case distance = "distance"
+    case reviewCount = "review_count"
 }
 
 let baseUrl = "https://api.yelp.com/v3"
@@ -33,17 +36,18 @@ class YelpClient: NSObject {
         var parameters: [String: Any] = ["location": "sunnyvale"]
         
         if sort != nil {
-            parameters["sort"] = sort?.rawValue as Any?
+            parameters["sort_by"] = "distance"
         }
         
         if categories != nil && (categories?.count)! > 0 {
-            parameters["category_filter"] = (categories)?.joined(separator: ",") as Any?
+            parameters["categories"] = (categories)?.joined(separator: ",") as Any?
         }
         
-        if deals != nil {
-            parameters["deals_filter"] = deals as Any?
-        }
+//        if deals != nil {
+//            parameters["deals_filter"] = deals as Any?
+//        }
         
+
         manager.get(url, parameters: parameters, progress: nil, success: { (operation, response) in
             if let dict = response as? [String: Any], let data = dict["businesses"] as? [[String: Any]] {
                 completionHandler(data)

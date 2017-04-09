@@ -61,7 +61,7 @@ class BusinessCell: UITableViewCell {
             reviewLabel.text =  String(reviewCount) + " Reviews"
         }
         if let resImageUrl = business?.image_url {
-            businessImageView.setImageWith(URL(string:resImageUrl)!)
+            businessImageView.setImageWith(URL(string:resImageUrl)!, placeholderImage: UIImage(named: "default-img"))
         }
         
         if let rating = business?.rating {
